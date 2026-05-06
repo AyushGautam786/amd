@@ -40,6 +40,10 @@ export default function DashboardLayout({
   const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
+    if (status === "unauthenticated") {
+      setIsChecking(false);
+      return;
+    }
     async function checkProfile() {
       if (status === "authenticated") {
         try {

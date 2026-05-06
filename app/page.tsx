@@ -1,8 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/landing/HeroSection";
@@ -14,15 +11,21 @@ import { CTASection } from "@/components/landing/CTASection";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen animated-bg grid-pattern">
-      <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      <StatsSection />
-      <DashboardPreview />
-      <TestimonialsSection />
-      <CTASection />
-      <Footer />
-    </main>
+    <div className="min-h-screen animated-bg relative">
+      {/* Subtle grid overlay — pointer-events-none so it never blocks clicks */}
+      <div className="fixed inset-0 grid-pattern opacity-20 pointer-events-none z-0" />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <FeaturesSection />
+          <StatsSection />
+          <DashboardPreview />
+          <TestimonialsSection />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }
